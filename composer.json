@@ -1,0 +1,26 @@
+{
+    "name": "kokspflanze/zfc-bbcode",
+    "description": "Zendframework 2 Module to convert BBCode to HTML",
+    "keywords": [
+        "framework",
+        "zf2",
+		"html",
+	  	"converter",
+	  	"bbcode"
+    ],
+    "homepage": "https://github.com/kokspflanze/ZfcBBCode",
+	"autoload": {
+		"psr-0": {
+			"ZfcBBCode\\": "src/"
+		}
+	},
+	"authors": [
+		{
+			"name": "Oliver"
+		}
+	],
+    "require": {
+        "php": ">=5.4",
+		"samclarke/SBBCodeParser": "dev-master"
+    }
+}
