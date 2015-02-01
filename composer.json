@@ -21,6 +21,6 @@
 	],
     "require": {
         "php": ">=5.4",
-		"samclarke/SBBCodeParser": "dev-master"
+		"samclarke/sbb-code-parser": "dev-master"
     }
 }
