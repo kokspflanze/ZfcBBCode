@@ -2,6 +2,8 @@
 
 namespace ZfcBBCode;
 
+use Zend\ServiceManager\AbstractPluginManager;
+
 class Module {
 	public function getConfig() {
 		return include __DIR__ . '/../../config/module.config.php';
@@ -15,6 +17,16 @@ class Module {
 				],
 			],
 		];
+	}
+
+	public function getViewHelperConfig(){
+		return array(
+			'factories' => array(
+				'bbCodeParser' => function(AbstractPluginManager $pluginManager){
+					return new View\Helper\BBCodeParser($pluginManager->getServiceLocator());
+				},
+			)
+		);
 	}
 
 	/**
