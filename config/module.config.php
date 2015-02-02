@@ -38,5 +38,10 @@ return [
 				':wassat:' => $serverName.'/minified/emoticons/wassat.png'
 			]
 		]
-	]
+	],
+	'service_manager' => [
+		'invokables' => [
+			'zfc-bbcode_parser' => 'ZfcBBCode\Service\SBBCodeParser',
+		],
+	],
 ];

@@ -43,20 +43,8 @@ class BBCodeParser extends AbstractHelper {
 	 * @return string
 	 */
 	public function __invoke($string){
-
-		$parser = new \SBBCodeParser\Node_Container_Document(true, false);
-
-		$config = $this->getServiceLocator()->get('Config')['zfc-bbcode'];
-		if($config['emoticons']['active']){
-			$parser->add_emoticons($config['emoticons']['path']);
-		}
-
-		$result = $parser->parse($string)
-			->detect_links()
-			->detect_emails()
-			->detect_emoticons()
-			->get_html();
-
-		return $result;
+		/** @var \ZfcBBCode\Service\SBBCodeParser $parser */
+		$parser = $this->getServiceLocator()->get('zfc-bbcode_parser');
+		return $parser->getParsedText($string);
 	}
 }
