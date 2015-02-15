@@ -20,7 +20,7 @@ class SBBCodeParser implements ServiceManagerAwareInterface {
 
 		$parser = new \SBBCodeParser\Node_Container_Document(true, false);
 
-		$config = $this->getServiceLocator()->get('Config')['zfc-bbcode'];
+		$config = $this->getServiceManager()->get('Config')['zfc-bbcode'];
 		if($config['emoticons']['active']){
 			$parser->add_emoticons($config['emoticons']['path']);
 		}
