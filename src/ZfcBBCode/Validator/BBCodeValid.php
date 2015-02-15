@@ -53,7 +53,7 @@ class BBCodeValid extends AbstractValidator
     public function isValid( $value )
     {
         $result = true;
-        if ($this->getBBCoderParser()->isTextValid( $value )) {
+        if (!$this->getBBCoderParser()->isTextValid( $value )) {
             $result = false;
             $this->error( self::ERROR_IN_VALID );
         }
