@@ -43,7 +43,7 @@ class BBCodeParser extends AbstractHelper {
 	 * @return string
 	 */
 	public function __invoke($string){
-		/** @var \ZfcBBCode\Service\SBBCodeParser $parser */
+		/** @var \ZfcBBCode\Service\ParserInterface $parser */
 		$parser = $this->getServiceLocator()->get('zfc-bbcode_parser');
 		return $parser->getParsedText($string);
 	}

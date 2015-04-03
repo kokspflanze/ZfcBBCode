@@ -3,9 +3,8 @@
 namespace ZfcBBCode\Service;
 
 use Zend\ServiceManager\ServiceManager;
-use Zend\ServiceManager\ServiceManagerAwareInterface;
 
-class SBBCodeParser implements ServiceManagerAwareInterface
+class SBBCodeParser implements ParserInterface
 {
 	/** @var ServiceManager */
 	protected $serviceManager;

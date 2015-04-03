@@ -24,8 +24,6 @@ class BBCodeValid extends AbstractValidator
 
     /** @var ServiceManager */
     protected $serviceManager;
-    /** @var  string */
-    protected $type;
 
     /**
      * @param ServiceManager $serviceManager
@@ -82,7 +80,7 @@ class BBCodeValid extends AbstractValidator
     }
 
     /**
-     * @return \ZfcBBCode\Service\SBBCOdeParser
+     * @return \ZfcBBCode\Service\ParserInterface
      */
     protected function getBBCoderParser()
     {
