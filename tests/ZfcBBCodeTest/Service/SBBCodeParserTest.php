@@ -160,6 +160,22 @@ class SBBCodeParserTest extends TestBase
                 true,
                 '[b]foobar[/b] [img]http://img.bar.com/baz.jpg[/img]'
             ),
+            array(
+                false,
+                '[img]http://img.com/pic.jpg[/ig]'
+            ),
+            array(
+                false,
+                '[b]foobar[/d]]'
+            ),
+            array(
+                false,
+                '[b]foobar[/d] [img]http://img.com/pic.jpg[/ig]'
+            ),
+            array(
+                false,
+                '[b]foobar[/d] [img]http://img.com/pic.jpg[/img]'
+            ),
         );
     }
 
