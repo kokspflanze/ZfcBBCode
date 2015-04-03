@@ -3,7 +3,7 @@ Zendframework 2 Module to convert BBCode to HTML
 
 Master
 [![Build Status](https://travis-ci.org/kokspflanze/ZfcBBCode.svg?branch=master)](https://travis-ci.org/kokspflanze/ZfcBBCode)
-[![Coverage Status](https://coveralls.io/repos/kokspflanze/ZfcBBCode/badge.svg?branch=master)](https://coveralls.io/r/kokspflanze/ZfcBBCode)
+[![Coverage Status](https://coveralls.io/repos/kokspflanze/ZfcBBCode/badge.svg?branch=master)](https://coveralls.io/r/kokspflanze/ZfcBBCode?branch=master)
 
 ## SYSTEM REQUIREMENTS
 
