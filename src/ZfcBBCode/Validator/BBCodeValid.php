@@ -15,7 +15,6 @@ class BBCodeValid extends AbstractValidator
      */
     const ERROR_IN_VALID = 'InValidText';
 
-
     /**
      * @var array Message templates
      */
@@ -58,7 +57,6 @@ class BBCodeValid extends AbstractValidator
             $result = false;
             $this->error( self::ERROR_IN_VALID );
         }
-
 
         return $result;
     }

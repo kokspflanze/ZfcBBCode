@@ -5,8 +5,8 @@ namespace ZfcBBCode\Service;
 use Zend\ServiceManager\ServiceManager;
 use Zend\ServiceManager\ServiceManagerAwareInterface;
 
-class SBBCodeParser implements ServiceManagerAwareInterface {
-
+class SBBCodeParser implements ServiceManagerAwareInterface
+{
 	/** @var ServiceManager */
 	protected $serviceManager;
 
@@ -16,22 +16,24 @@ class SBBCodeParser implements ServiceManagerAwareInterface {
 	 *
 	 * @return string
 	 */
-	public function getParsedText( $text ){
-
+	public function getParsedText( $text )
+    {
 		$parser = new \SBBCodeParser\Node_Container_Document(true, false);
 
 		$config = $this->getServiceManager()->get('Config')['zfc-bbcode'];
-		if($config['emoticons']['active']){
+		if ($config['emoticons']['active']) {
 			$parser->add_emoticons($config['emoticons']['path']);
 		}
 
 		$result = $parser->parse($text)
 			->detect_links()
-			->detect_emails()
-			->detect_emoticons()
-			->get_html();
+			->detect_emails();
 
-		return $result;
+        if ($config['emoticons']['active']) {
+            $result->detect_emoticons();
+        }
+
+		return $result->get_html();
 	}
 
 	/**
@@ -40,17 +42,27 @@ class SBBCodeParser implements ServiceManagerAwareInterface {
 	 *
 	 * @return bool
 	 */
-	public function isTextValid( $text ){
-
+	public function isTextValid( $text )
+    {
 		$parser = new \SBBCodeParser\Node_Container_Document();
+
+        $config = $this->getServiceManager()->get('Config')['zfc-bbcode'];
+        if ($config['emoticons']['active']) {
+            $parser->add_emoticons($config['emoticons']['path']);
+        }
 
 		$result = true;
 		try {
 			$parser->parse($text)
 				->detect_links()
-				->detect_emails()
-				->detect_emoticons()
-				->get_html();
+				->detect_emails();
+
+            if ($config['emoticons']['active']) {
+                $parser->detect_emoticons();
+            }
+
+            $parser->get_html();
+
 		}catch(\Exception $e){
 			$result = false;
 		}
@@ -62,7 +74,8 @@ class SBBCodeParser implements ServiceManagerAwareInterface {
 	/**
 	 * @return ServiceManager
 	 */
-	public function getServiceManager(){
+	public function getServiceManager()
+    {
 		return $this->serviceManager;
 	}
 
@@ -71,7 +84,8 @@ class SBBCodeParser implements ServiceManagerAwareInterface {
 	 *
 	 * @return $this
 	 */
-	public function setServiceManager( ServiceManager $oServiceManager ) {
+	public function setServiceManager( ServiceManager $oServiceManager )
+    {
 		$this->serviceManager = $oServiceManager;
 
 		return $this;
