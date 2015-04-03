@@ -92,7 +92,7 @@ class BBCodeValidTest extends TestBase
     protected function getClass( $className = null )
     {
         $class = $className?$className:$this->className;
-        /** @var \Zend\ServiceManager\ServiceManagerAwareInterface $class */
+        /** @var \Zend\ServiceManager\ServiceLocatorInterface $class */
         $class = new $class($this->serviceManager);
 
         return $class;
