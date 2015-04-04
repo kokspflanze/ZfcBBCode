@@ -27,3 +27,13 @@ that are listed in `composer.json`
 ## HTML-BBCode-Editor
 
 We recommend to use [www.sceditor.com](http://www.sceditor.com).
+
+## Feature
+
+- ViewHelper
+
+```php
+	<?= $this->bbCodeParser('foobar') ?>
+```
+
+- ValidatorClass => ZfcBBCode\Validator\BBCodeValid 

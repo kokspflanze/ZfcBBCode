@@ -18,7 +18,7 @@
         <server name="REMOTE_ADDR" value="127.1.2.3"/>
     </php>
     <testsuites>
-        <testsuite name="PaymentAPI component test Suite">
+        <testsuite name="ZfcBBCode component test Suite">
             <directory suffix="Test.php">.</directory>
         </testsuite>
     </testsuites>
