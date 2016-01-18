@@ -5,13 +5,9 @@ Master
 [![Build Status](https://travis-ci.org/kokspflanze/ZfcBBCode.svg?branch=master)](https://travis-ci.org/kokspflanze/ZfcBBCode?branch=master)
 [![Coverage Status](https://coveralls.io/repos/kokspflanze/ZfcBBCode/badge.svg?branch=master)](https://coveralls.io/r/kokspflanze/ZfcBBCode?branch=master)
 
-Develop
-[![Build Status](https://travis-ci.org/kokspflanze/ZfcBBCode.svg?branch=develop)](https://travis-ci.org/kokspflanze/ZfcBBCode?branch=develop)
-[![Coverage Status](https://coveralls.io/repos/kokspflanze/ZfcBBCode/badge.svg?branch=develop)](https://coveralls.io/r/kokspflanze/ZfcBBCode?branch=develop)
-
 ## SYSTEM REQUIREMENTS
 
-requires PHP 5.4 or later.
+requires PHP 5.5 or later.
 
 ## INSTALLATION
 
