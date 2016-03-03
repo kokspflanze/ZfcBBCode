@@ -3,48 +3,29 @@
 namespace ZfcBBCode\View\Helper;
 
 use Zend\Form\View\Helper\AbstractHelper;
-use Zend\ServiceManager\ServiceLocatorAwareInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use ZfcBBCode\Service\ParserInterface;
 
-class BBCodeParser extends AbstractHelper {
+class BBCodeParser extends AbstractHelper
+{
+    /** @var  ParserInterface */
+    protected $bbCodeParser;
 
-	/** @var ServiceLocatorInterface */
-	protected $serviceLocator;
+    /**
+     * BBCodeParser constructor.
+     * @param ParserInterface $bbCodeParser
+     */
+    public function __construct(ParserInterface $bbCodeParser)
+    {
+        $this->bbCodeParser = $bbCodeParser;
+    }
 
-	/**
-	 * @param ServiceLocatorInterface $serviceLocatorInterface
-	 */
-	public function __construct(ServiceLocatorInterface $serviceLocatorInterface){
-		$this->setServiceLocator($serviceLocatorInterface);
-	}
-
-	/**
-	 * @return ServiceLocatorInterface
-	 */
-	public function getServiceLocator(){
-		return $this->serviceLocator;
-	}
-
-	/**
-	 * @param ServiceLocatorInterface $serviceLocator
-	 *
-	 * @return $this
-	 */
-	public function setServiceLocator(ServiceLocatorInterface $serviceLocator){
-		$this->serviceLocator = $serviceLocator;
-
-		return $this;
-	}
-
-
-	/**
-	 * @param $string
-	 *
-	 * @return string
-	 */
-	public function __invoke($string){
-		/** @var \ZfcBBCode\Service\ParserInterface $parser */
-		$parser = $this->getServiceLocator()->get('zfc-bbcode_parser');
-		return $parser->getParsedText($string);
-	}
+    /**
+     * @param $string
+     *
+     * @return string
+     */
+    public function __invoke($string)
+    {
+        return $this->bbCodeParser->getParsedText($string);
+    }
 }

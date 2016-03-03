@@ -5,11 +5,10 @@ namespace ZfcBBCode\Validator;
 
 use Zend\Validator\AbstractValidator;
 use Zend\Validator\Exception;
-use Zend\ServiceManager\ServiceManager;
+use ZfcBBCode\Service\ParserInterface;
 
 class BBCodeValid extends AbstractValidator
 {
-
     /**
      * Error constants
      */
@@ -22,17 +21,18 @@ class BBCodeValid extends AbstractValidator
         self::ERROR_IN_VALID => "Text is not allowed BBCode"
     ];
 
-    /** @var ServiceManager */
-    protected $serviceManager;
+    /** @var  ParserInterface */
+    protected $bbCodeParser;
 
     /**
-     * @param ServiceManager $serviceManager
+     * BBCodeValid constructor.
+     * @param ParserInterface $bbCodeParser
      */
-    public function __construct( ServiceManager $serviceManager )
+    public function __construct(ParserInterface $bbCodeParser)
     {
-        $this->setServiceManager( $serviceManager );
-
         parent::__construct();
+
+        $this->bbCodeParser = $bbCodeParser;
     }
 
     /**
@@ -47,43 +47,17 @@ class BBCodeValid extends AbstractValidator
      * @return bool
      * @throws Exception\RuntimeException If validation of $value is impossible
      */
-    public function isValid( $value )
+    public function isValid($value)
     {
         $result = true;
-        $this->setValue( $value );
-        if (!$this->getBBCoderParser()->isTextValid( $value )) {
+        $this->setValue($value);
+        if (!$this->bbCodeParser->isTextValid($value)) {
             $result = false;
-            $this->error( self::ERROR_IN_VALID );
+            $this->error(self::ERROR_IN_VALID);
         }
 
         return $result;
     }
 
-    /**
-     * @param ServiceManager $serviceManager
-     *
-     * @return $this
-     */
-    protected function setServiceManager( ServiceManager $serviceManager )
-    {
-        $this->serviceManager = $serviceManager;
 
-        return $this;
-    }
-
-    /**
-     * @return ServiceManager
-     */
-    protected function getServiceManager()
-    {
-        return $this->serviceManager;
-    }
-
-    /**
-     * @return \ZfcBBCode\Service\ParserInterface
-     */
-    protected function getBBCoderParser()
-    {
-        return $this->getServiceManager()->get( 'zfc-bbcode_parser' );
-    }
 }

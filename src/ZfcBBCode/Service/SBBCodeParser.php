@@ -2,91 +2,76 @@
 
 namespace ZfcBBCode\Service;
 
-use Zend\ServiceManager\ServiceManager;
-
 class SBBCodeParser implements ParserInterface
 {
-	/** @var ServiceManager */
-	protected $serviceManager;
+    /** @var array */
+    protected $configData = [];
 
-	/**
-	 * get parsed text
-	 * @param $text
-	 *
-	 * @return string
-	 */
-	public function getParsedText( $text )
+    /**
+     * SBBCodeParser constructor.
+     * @param array $configData
+     */
+    public function __construct(array $configData)
     {
-		$parser = new \SBBCodeParser\Node_Container_Document(true, false);
+        $this->configData = $configData;
+    }
 
-		$config = $this->getServiceManager()->get('Config')['zfc-bbcode'];
-		if ($config['emoticons']['active']) {
-			$parser->add_emoticons($config['emoticons']['path']);
-		}
+    /**
+     * get parsed text
+     * @param $text
+     *
+     * @return string
+     */
+    public function getParsedText($text)
+    {
+        $parser = new \SBBCodeParser\Node_Container_Document(true, false);
 
-		$result = $parser->parse($text)
-			->detect_links()
-			->detect_emails();
+        if ($this->configData['emoticons']['active']) {
+            $parser->add_emoticons($this->configData['emoticons']['path']);
+        }
 
-        if ($config['emoticons']['active']) {
+        $result = $parser->parse($text)
+            ->detect_links()
+            ->detect_emails();
+
+        if ($this->configData['emoticons']['active']) {
             $result->detect_emoticons();
         }
 
-		return $result->get_html();
-	}
+        return $result->get_html();
+    }
 
-	/**
-	 * check if the text is correct
-	 * @param $text
-	 *
-	 * @return bool
-	 */
-	public function isTextValid( $text )
+    /**
+     * check if the text is correct
+     * @param $text
+     *
+     * @return bool
+     */
+    public function isTextValid($text)
     {
-		$parser = new \SBBCodeParser\Node_Container_Document();
+        $parser = new \SBBCodeParser\Node_Container_Document();
 
-        $config = $this->getServiceManager()->get('Config')['zfc-bbcode'];
-        if ($config['emoticons']['active']) {
-            $parser->add_emoticons($config['emoticons']['path']);
+        if ($this->configData['emoticons']['active']) {
+            $parser->add_emoticons($this->configData['emoticons']['path']);
         }
 
-		$result = true;
-		try {
-			$parser->parse($text)
-				->detect_links()
-				->detect_emails();
+        $result = true;
+        try {
+            $parser->parse($text)
+                ->detect_links()
+                ->detect_emails();
 
-            if ($config['emoticons']['active']) {
+            if ($this->configData['emoticons']['active']) {
                 $parser->detect_emoticons();
             }
 
             $parser->get_html();
 
-		}catch(\Exception $e){
-			$result = false;
-		}
+        } catch (\Exception $e) {
+            $result = false;
+        }
 
-		return $result;
-	}
+        return $result;
+    }
 
-
-	/**
-	 * @return ServiceManager
-	 */
-	public function getServiceManager()
-    {
-		return $this->serviceManager;
-	}
-
-	/**
-	 * @param ServiceManager $oServiceManager
-	 *
-	 * @return $this
-	 */
-	public function setServiceManager( ServiceManager $oServiceManager )
-    {
-		$this->serviceManager = $oServiceManager;
-
-		return $this;
-	}
 }
