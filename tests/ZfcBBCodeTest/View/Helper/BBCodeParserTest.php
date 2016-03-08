@@ -10,6 +10,29 @@ class BBCodeParserTest extends TestBase
 {
     protected $className = 'ZfcBBCode\View\Helper\BBCodeParser';
 
+    protected function setUp()
+    {
+        parent::setUp();
+
+        $parser = $this->getMockBuilder('ZfcBBCode\Service\SBBCodeParser')
+            ->setConstructorArgs([
+                [
+                    'emoticons' => [
+                        'active' => false,
+                        'path' => [
+
+                        ],
+                    ],
+                ],
+            ])
+            ->setMethods(null)
+            ->getMock();
+
+        $this->mockedConstructorArgList = [
+            $parser
+        ];
+    }
+
     /**
      * @param $expected
      * @param $string
@@ -57,16 +80,5 @@ class BBCodeParserTest extends TestBase
         );
     }
 
-    /**
-     * @param null $className
-     * @return object
-     */
-    protected function getClass( $className = null )
-    {
-        $class = $className?$className:$this->className;
-        /** @var \Zend\ServiceManager\ServiceLocatorInterface $class */
-        $class = new $class($this->serviceManager);
 
-        return $class;
-    }
 }

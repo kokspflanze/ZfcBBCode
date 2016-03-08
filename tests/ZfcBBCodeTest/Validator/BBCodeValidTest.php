@@ -10,6 +10,29 @@ class BBCodeValidTest extends TestBase
 {
     protected $className = 'ZfcBBCode\Validator\BBCodeValid';
 
+    protected function setUp()
+    {
+        parent::setUp();
+
+        $parser = $this->getMockBuilder('ZfcBBCode\Service\SBBCodeParser')
+            ->setConstructorArgs([
+                [
+                    'emoticons' => [
+                        'active' => false,
+                        'path' => [
+
+                        ],
+                    ],
+                ],
+            ])
+            ->setMethods(null)
+            ->getMock();
+
+        $this->mockedConstructorArgList = [
+            $parser
+        ];
+    }
+
     /**
      * @param $expected
      * @param $string
@@ -17,6 +40,7 @@ class BBCodeValidTest extends TestBase
      */
     public function testIsValid( $expected, $string )
     {
+        /** @var \ZfcBBCode\Validator\BBCodeValid $class */
         $class = $this->getClass();
         $method = $this->getMethod('isValid');
         $result = $method->invokeArgs($class, array($string));
@@ -32,9 +56,7 @@ class BBCodeValidTest extends TestBase
 
     public function testGetBBCodeParser()
     {
-        $class = $this->getClass();
-        $method = $this->getMethod('getBBCoderParser');
-        $result = $method->invokeArgs($class, array());
+        $result = $this->getProperty('bbCodeParser');
 
         $this->assertInstanceOf('\ZfcBBCode\Service\ParserInterface', $result);
     }
@@ -85,16 +107,4 @@ class BBCodeValidTest extends TestBase
         );
     }
 
-    /**
-     * @param null $className
-     * @return object
-     */
-    protected function getClass( $className = null )
-    {
-        $class = $className?$className:$this->className;
-        /** @var \Zend\ServiceManager\ServiceLocatorInterface $class */
-        $class = new $class($this->serviceManager);
-
-        return $class;
-    }
 }

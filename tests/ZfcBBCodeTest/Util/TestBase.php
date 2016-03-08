@@ -7,22 +7,44 @@ use PHPUnit_Framework_TestCase as TestCase;
 
 class TestBase extends TestCase
 {
-    /** @var  \Zend\ServiceManager\ServiceManager */
-    protected $serviceManager;
+    /** @var  \PHPUnit_Framework_MockObject_MockObject */
+    protected $class;
+
     /** @var  string */
     protected $className;
 
-    public function setUp()
+    /** @var array|null */
+    protected $mockedMethodList = null;
+
+    /** @var array */
+    protected $mockedConstructorArgList = [];
+
+    /**
+     * @param bool $newInstance
+     * @return \PHPUnit_Framework_MockObject_MockObject
+     */
+    protected function getClass($newInstance = false)
     {
-        parent::setUp();
-        $this->serviceManager = ServiceManagerFactory::getServiceManager();
+        if (!$this->class || $newInstance) {
+            $class = $this->getMockBuilder($this->className);
+            if ($this->mockedConstructorArgList) {
+                $class->setConstructorArgs($this->mockedConstructorArgList);
+            } else {
+                $class->disableOriginalConstructor();
+            }
+            $this->class = $class->setMethods($this->mockedMethodList)
+                ->getMock();
+        }
+
+        return $this->class;
     }
 
     /**
      * @param $methodName
      * @return \ReflectionMethod
      */
-    protected function getMethod($methodName) {
+    protected function getMethod($methodName)
+    {
         $reflection = new \ReflectionClass($this->getClass());
         $method = $reflection->getMethod($methodName);
         $method->setAccessible(true);
@@ -31,16 +53,14 @@ class TestBase extends TestCase
     }
 
     /**
-     * @param null $className
-     * @return object
+     * @param $name
+     * @return mixed
      */
-    protected function getClass( $className = null )
+    protected function getProperty($name)
     {
-        $class = $className?$className:$this->className;
-        /** @var \Zend\ServiceManager\ServiceManagerAwareInterface $class */
-        $class = new $class;
-        $class->setServiceManager($this->serviceManager);
+        $reflection = new \ReflectionProperty($this->getClass(), $name);
+        $reflection->setAccessible(true);
 
-        return $class;
+        return $reflection->getValue($this->getClass());
     }
 }
