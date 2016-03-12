@@ -37,7 +37,7 @@ class Module
             'factories' => [
                 'bbCodeParser' => function (AbstractPluginManager $pluginManager) {
                     /** @var \ZfcBBCode\Service\ParserInterface $bbCodeParser */
-                    $bbCodeParser = $pluginManager->get('zfc-bbcode_parser');
+                    $bbCodeParser = $pluginManager->getServiceLocator()->get('zfc-bbcode_parser');
                     return new View\Helper\BBCodeParser($bbCodeParser);
                 },
             ]
