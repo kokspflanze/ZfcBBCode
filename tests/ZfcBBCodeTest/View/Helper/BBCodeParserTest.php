@@ -52,32 +52,32 @@ class BBCodeParserTest extends TestBase
      */
     public function dataProviderTestInvoke()
     {
-        return array(
-            array(
+        return [
+            [
                 'foobar',
                 'foobar'
-            ),
-            array(
+            ],
+            [
                 '[URL]foobar',
                 '[URL]foobar'
-            ),
-            array(
+            ],
+            [
                 '<a href="https://img.com">https://img.com</a>',
                 'https://img.com'
-            ),
-            array(
+            ],
+            [
                 '<img alt="http://img.com/pic.jpg" src="http://img.com/pic.jpg" />',
                 '[img]http://img.com/pic.jpg[/img]'
-            ),
-            array(
+            ],
+            [
                 '<img alt="https://img.com/pic.jpg" src="https://img.com/pic.jpg" />',
                 '[img]https://img.com/pic.jpg[/img]'
-            ),
-            array(
+            ],
+            [
                 '<strong>foobar</strong> <img alt="http://img.bar.com/baz.jpg" src="http://img.bar.com/baz.jpg" />',
                 '[b]foobar[/b] [img]http://img.bar.com/baz.jpg[/img]'
-            ),
-        );
+            ],
+        ];
     }
 
 

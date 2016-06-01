@@ -1,7 +1,26 @@
 <?php
+
+use ZfcBBCode\Service;
+use ZfcBBCode\View\Helper;
 $serverName = isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '';
 
 return [
+    'service_manager' => [
+        'aliases' => [
+            'zfc-bbcode_parser' => Service\SBBCodeParser::class,
+        ],
+        'factories' => [
+            Service\SBBCodeParser::class => Service\SBBCodeParserFactory::class,
+        ],
+    ],
+    'view_helpers' => [
+        'aliases' => [
+            'bbCodeParser' => Helper\BBCodeParser::class
+        ],
+        'factories' => [
+            Helper\BBCodeParser::class => Helper\BBCodeParserFactory::class,
+        ],
+    ],
     'zfc-bbcode' => [
         'emoticons' => [
             'active' => false,
@@ -36,7 +55,7 @@ return [
                 ':unsure:' => $serverName . '/minified/emoticons/unsure.png',
                 ':woot:' => $serverName . '/minified/emoticons/woot.png',
                 ':wassat:' => $serverName . '/minified/emoticons/wassat.png'
-            ]
-        ]
+            ],
+        ],
     ],
 ];

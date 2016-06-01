@@ -43,14 +43,14 @@ class BBCodeValidTest extends TestBase
         /** @var \ZfcBBCode\Validator\BBCodeValid $class */
         $class = $this->getClass();
         $method = $this->getMethod('isValid');
-        $result = $method->invokeArgs($class, array($string));
+        $result = $method->invokeArgs($class, [$string]);
 
         $this->assertSame($expected, $result);
         $this->assertSame($expected, !(bool) $class->getMessages());
 
 
         $method = $this->getMethod('getValue');
-        $result = $method->invokeArgs($class, array());
+        $result = $method->invokeArgs($class, []);
         $this->assertSame($string, $result);
     }
 
@@ -63,48 +63,48 @@ class BBCodeValidTest extends TestBase
 
     public function dataProviderTestIsValid()
     {
-        return array(
-            array(
+        return [
+            [
                 true,
                 'foobar'
-            ),
-            array(
+            ],
+            [
                 true,
                 '[URL]foobar'
-            ),
-            array(
+            ],
+            [
                 true,
                 'https://img.com'
-            ),
-            array(
+            ],
+            [
                 true,
                 '[img]http://img.com/pic.jpg[/img]'
-            ),
-            array(
+            ],
+            [
                 true,
                 '[img]https://img.com/pic.jpg[/img]'
-            ),
-            array(
+            ],
+            [
                 true,
                 '[b]foobar[/b] [img]http://img.bar.com/baz.jpg[/img]'
-            ),
-            array(
+            ],
+            [
                 false,
                 '[img]http://img.com/pic.jpg[/ig]'
-            ),
-            array(
+            ],
+            [
                 false,
                 '[b]foobar[/d]]'
-            ),
-            array(
+            ],
+            [
                 false,
                 '[b]foobar[/d] [img]http://img.com/pic.jpg[/ig]'
-            ),
-            array(
+            ],
+            [
                 false,
                 '[b]foobar[/d] [img]http://img.com/pic.jpg[/img]'
-            ),
-        );
+            ],
+        ];
     }
 
 }
