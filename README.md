@@ -1,5 +1,5 @@
 # ZfcBBCode
-Zendframework 2 Module to convert BBCode to HTML
+Zendframework Module to convert BBCode to HTML
 
 Master
 [![Build Status](https://travis-ci.org/kokspflanze/ZfcBBCode.svg?branch=master)](https://travis-ci.org/kokspflanze/ZfcBBCode?branch=master)
@@ -7,7 +7,7 @@ Master
 
 ## SYSTEM REQUIREMENTS
 
-requires PHP 5.5 or later.
+requires PHP 5.6 or later.
 
 ## INSTALLATION
 
