@@ -2,6 +2,7 @@
 
 use ZfcBBCode\Service;
 use ZfcBBCode\View\Helper;
+
 $serverName = isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '';
 
 return [
