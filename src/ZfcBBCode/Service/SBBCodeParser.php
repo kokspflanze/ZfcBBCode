@@ -2,6 +2,8 @@
 
 namespace ZfcBBCode\Service;
 
+use SBBCodeParser\Node_Container_Document;
+
 class SBBCodeParser implements ParserInterface
 {
     /** @var array */
@@ -24,7 +26,7 @@ class SBBCodeParser implements ParserInterface
      */
     public function getParsedText($text)
     {
-        $parser = new \SBBCodeParser\Node_Container_Document(true, false);
+        $parser = new Node_Container_Document(true, false);
 
         if ($this->configData['emoticons']['active']) {
             $parser->add_emoticons($this->configData['emoticons']['path']);
@@ -49,7 +51,7 @@ class SBBCodeParser implements ParserInterface
      */
     public function isTextValid($text)
     {
-        $parser = new \SBBCodeParser\Node_Container_Document();
+        $parser = new Node_Container_Document();
 
         if ($this->configData['emoticons']['active']) {
             $parser->add_emoticons($this->configData['emoticons']['path']);

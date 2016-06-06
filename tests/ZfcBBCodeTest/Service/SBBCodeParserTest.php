@@ -127,32 +127,32 @@ class SBBCodeParserTest extends TestBase
     public function dataProviderTestGetParsedTextEmoticons()
     {
         $data = $this->dataProviderTestGetParsedText();
-        $data = array_merge( $data, array(
-            array(
+        $data = array_merge( $data, [
+            [
                 '<img alt=":)" src="http://foo.bar/minified/emoticons/smile.png" />',
                 ':)'
-            ),
-            array(
+            ],
+            [
                 '<img alt=":O" src="http://foo.bar/minified/emoticons/shocked.png" />',
                 ':O'
-            ),
-            array(
+            ],
+            [
                 '<img alt=":dizzy:" src="http://foo.bar/minified/emoticons/dizzy.png" />',
                 ':dizzy:'
-            ),
-            array(
+            ],
+            [
                 '<img alt=":getlost:" src="http://foo.bar/minified/emoticons/getlost.png" />',
                 ':getlost:'
-            ),
-            array(
+            ],
+            [
                 '<img alt=":unsure:" src="http://foo.bar/minified/emoticons/unsure.png" />',
                 ':unsure:'
-            ),
-            array(
+            ],
+            [
                 '<img alt=":wassat:" src="http://foo.bar/minified/emoticons/wassat.png" />',
                 ':wassat:'
-            ),
-        ));
+            ],
+        ]);
 
         return $data;
     }
@@ -162,129 +162,129 @@ class SBBCodeParserTest extends TestBase
      */
     public function dataProviderTestGetParsedText()
     {
-        return array(
-            array(
+        return [
+            [
                 'foobar',
                 'foobar'
-            ),
-            array(
+            ],
+            [
                 '[URL]foobar',
                 '[URL]foobar'
-            ),
-            array(
+            ],
+            [
                 '<a href="https://img.com">https://img.com</a>',
                 'https://img.com'
-            ),
-            array(
+            ],
+            [
                 '<img alt="http://img.com/pic.jpg" src="http://img.com/pic.jpg" />',
                 '[img]http://img.com/pic.jpg[/img]'
-            ),
-            array(
+            ],
+            [
                 '<img alt="https://img.com/pic.jpg" src="https://img.com/pic.jpg" />',
                 '[img]https://img.com/pic.jpg[/img]'
-            ),
-            array(
+            ],
+            [
                 '<strong>foobar</strong> <img alt="http://img.bar.com/baz.jpg" src="http://img.bar.com/baz.jpg" />',
                 '[b]foobar[/b] [img]http://img.bar.com/baz.jpg[/img]'
-            ),
-        );
+            ],
+        ];
     }
 
     public function dataProviderTestIsTextValid()
     {
-        return array(
-            array(
+        return [
+            [
                 true,
                 'foobar'
-            ),
-            array(
+            ],
+            [
                 true,
                 '[URL]foobar'
-            ),
-            array(
+            ],
+            [
                 true,
                 'https://img.com'
-            ),
-            array(
+            ],
+            [
                 true,
                 '[img]http://img.com/pic.jpg[/img]'
-            ),
-            array(
+            ],
+            [
                 true,
                 '[img]https://img.com/pic.jpg[/img]'
-            ),
-            array(
+            ],
+            [
                 true,
                 '[b]foobar[/b] [img]http://img.bar.com/baz.jpg[/img]'
-            ),
-            array(
+            ],
+            [
                 false,
                 '[img]http://img.com/pic.jpg[/ig]'
-            ),
-            array(
+            ],
+            [
                 false,
                 '[b]foobar[/d]]'
-            ),
-            array(
+            ],
+            [
                 false,
                 '[b]foobar[/d] [img]http://img.com/pic.jpg[/ig]'
-            ),
-            array(
+            ],
+            [
                 false,
                 '[b]foobar[/d] [img]http://img.com/pic.jpg[/img]'
-            ),
-        );
+            ],
+        ];
     }
 
     public function dataProviderTestIsTextValidEmoticons()
     {
         $data = $this->dataProviderTestIsTextValid();
-        $data = array_merge( $data, array(
-            array(
+        $data = array_merge( $data, [
+            [
                 true,
                 ':)'
-            ),
-            array(
+            ],
+            [
                 true,
                 ':O'
-            ),
-            array(
+            ],
+            [
                 true,
                 ':dizzy:'
-            ),
-            array(
+            ],
+            [
                 true,
                 ':getlost:'
-            ),
-            array(
+            ],
+            [
                 true,
                 ':unsure:'
-            ),
-            array(
+            ],
+            [
                 true,
                 ':wassat:'
-            ),
-            array(
+            ],
+            [
                 true,
                 ':wasdfgsat:'
-            ),
-            array(
+            ],
+            [
                 true,
                 ':wÄasdfgsat:'
-            ),
-            array(
+            ],
+            [
                 true,
                 ':wasdfgsatdfg'
-            ),
-            array(
+            ],
+            [
                 true,
                 ':wasdfgsat:dfh'
-            ),
-            array(
+            ],
+            [
                 true,
                 'dfh:wasdfgsat:'
-            ),
-        ));
+            ],
+        ]);
 
         return $data;
     }

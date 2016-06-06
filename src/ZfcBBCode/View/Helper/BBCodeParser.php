@@ -2,7 +2,7 @@
 
 namespace ZfcBBCode\View\Helper;
 
-use Zend\Form\View\Helper\AbstractHelper;
+use Zend\View\Helper\AbstractHelper;
 use ZfcBBCode\Service\ParserInterface;
 
 class BBCodeParser extends AbstractHelper
