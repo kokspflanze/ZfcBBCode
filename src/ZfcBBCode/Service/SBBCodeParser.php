@@ -20,7 +20,7 @@ class SBBCodeParser implements ParserInterface
 
     /**
      * get parsed text
-     * @param $text
+     * @param string $text
      *
      * @return string
      */
@@ -45,7 +45,7 @@ class SBBCodeParser implements ParserInterface
 
     /**
      * check if the text is correct
-     * @param $text
+     * @param string $text
      *
      * @return bool
      */

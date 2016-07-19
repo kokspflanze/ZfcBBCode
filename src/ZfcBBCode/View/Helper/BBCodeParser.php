@@ -20,7 +20,7 @@ class BBCodeParser extends AbstractHelper
     }
 
     /**
-     * @param $string
+     * @param string $string
      *
      * @return string
      */
