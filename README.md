@@ -7,7 +7,7 @@ Master
 
 ## SYSTEM REQUIREMENTS
 
-requires PHP 5.6 or later.
+requires PHP 5.5 or later.
 
 ## INSTALLATION
 
