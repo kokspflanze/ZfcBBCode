@@ -5,6 +5,7 @@ namespace ZfcBBCode\View\Helper;
 
 
 use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\AbstractPluginManager;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -22,12 +23,12 @@ class BBCodeParserFactory implements FactoryInterface
     }
 
     /**
-     * @param ServiceLocatorInterface $serviceLocator
+     * @param ServiceLocatorInterface|AbstractPluginManager $serviceLocator
      * @return BBCodeParser
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        return $this($serviceLocator, BBCodeParser::class);
+        return $this($serviceLocator->getServiceLocator(), BBCodeParser::class);
     }
 
 
