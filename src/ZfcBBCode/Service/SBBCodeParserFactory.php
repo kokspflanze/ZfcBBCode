@@ -3,10 +3,8 @@
 
 namespace ZfcBBCode\Service;
 
-
 use Interop\Container\ContainerInterface;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 class SBBCodeParserFactory implements FactoryInterface
 {
@@ -20,15 +18,5 @@ class SBBCodeParserFactory implements FactoryInterface
     {
         return new SBBCodeParser($container->get('Configuration')['zfc-bbcode']);
     }
-
-    /**
-     * @param ServiceLocatorInterface $serviceLocator
-     * @return SBBCodeParser
-     */
-    public function createService(ServiceLocatorInterface $serviceLocator)
-    {
-        return $this($serviceLocator, SBBCodeParser::class);
-    }
-
 
 }

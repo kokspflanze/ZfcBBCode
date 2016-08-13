@@ -1,32 +1,36 @@
 {
   "name": "kokspflanze/zfc-bbcode",
-  "description": "Zendframework 2 Module to convert BBCode to HTML",
+  "description": "Zendframework Module to convert BBCode to HTML",
   "keywords": [
     "framework",
-    "zf2",
+    "zf",
     "html",
     "converter",
     "bbcode"
   ],
   "homepage": "https://github.com/kokspflanze/ZfcBBCode",
   "autoload": {
-    "psr-0": {
-      "ZfcBBCode\\": "src/",
-      "ZfcBBCodeTest\\": "tests/"
+    "psr-4": {
+      "ZfcBBCode\\": "src/ZfcBBCode"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ZfcBBCodeTest\\": "tests/ZfcBBCodeTest"
     }
   },
   "authors": [
     {
       "name": "Oliver",
-      "email": "kokspflanze@gmx.de"
+      "email": "kokspflanze@protonmail.com"
     }
   ],
   "require": {
-    "php": ">=5.5",
-    "zendframework/zend-servicemanager": "~2.7|~3.0",
+    "php": ">=5.6",
+    "zendframework/zend-servicemanager": "~3.0",
     "zendframework/zend-validator": "~2.8",
     "zendframework/zend-view": "~2.7",
-    "kokspflanze/sbb-code-parser": "~0.1"
+    "kokspflanze/sbb-code-parser": "^0.1.2"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.8|~5.3",
