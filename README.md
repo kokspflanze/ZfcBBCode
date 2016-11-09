@@ -7,7 +7,7 @@ Master
 
 ## SYSTEM REQUIREMENTS
 
-requires PHP 5.5 or later.
+requires PHP 5.6 or later.
 
 ## INSTALLATION
 
@@ -36,4 +36,4 @@ We recommend to use [www.sceditor.com](http://www.sceditor.com).
 	<?= $this->bbCodeParser('foobar') ?>
 ```
 
-- ValidatorClass => ZfcBBCode\Validator\BBCodeValid 
+- ValidatorClass => `[ZfcBBCode\Validator\BBCodeValid](https://github.com/kokspflanze/ZfcBBCode/blob/master/src/ZfcBBCode/Validator/BBCodeValid.php)` 
