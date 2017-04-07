@@ -9,11 +9,12 @@ php:
   - nightly
   - hhvm
 
-allow_failures:
-  - php: nightly
-
 matrix:
   fast_finish: true
+  allow_failures:
+    - php:
+        - nightly
+        - hhvm
 
 notifications:
   webhooks:
