@@ -26,7 +26,7 @@ class SBBCodeParserTest extends TestBase
      * @param $string
      * @dataProvider dataProviderTestGetParsedText
      */
-    public function testGetParsedText( $expected, $string )
+    public function testGetParsedText($expected, $string)
     {
         /** @var \ZfcBBCode\Service\SBBCodeParser $class */
         $class = $this->getClass();
@@ -40,7 +40,7 @@ class SBBCodeParserTest extends TestBase
      * @param $string
      * @dataProvider dataProviderTestGetParsedTextEmoticons
      */
-    public function testGetParsedTextEmoticons( $expected, $string )
+    public function testGetParsedTextEmoticons($expected, $string)
     {
         $serverName = 'http://foo.bar';
         $this->mockedConstructorArgList = [
@@ -89,9 +89,10 @@ class SBBCodeParserTest extends TestBase
     /**
      * @param $expected
      * @param $string
+     * @dataProvider dataProviderTestIsTextValidEmoticons
      * @dataProvider dataProviderTestIsTextValid
      */
-    public function testIsTextValid( $expected, $string )
+    public function testIsTextValid($expected, $string)
     {
         /** @var \ZfcBBCode\Service\SBBCodeParser $class */
         $class = $this->getClass();
@@ -101,33 +102,12 @@ class SBBCodeParserTest extends TestBase
     }
 
     /**
-     * @param $expected
-     * @param $string
-     * @dataProvider dataProviderTestIsTextValidEmoticons
-     */
-    public function testIsTextValidEmoticons( $expected, $string )
-    {
-        $this->mockedConstructorArgList = [
-            [
-                'emoticons' => [
-                    'active' => true,
-                    'path' => [
-
-                    ],
-                ],
-            ]
-        ];
-
-        $this->testIsTextValid($expected, $string);
-    }
-
-    /**
      * @return array
      */
     public function dataProviderTestGetParsedTextEmoticons()
     {
         $data = $this->dataProviderTestGetParsedText();
-        $data = array_merge( $data, [
+        $data = array_merge($data, [
             [
                 '<img alt=":)" src="http://foo.bar/minified/emoticons/smile.png" />',
                 ':)'
@@ -190,6 +170,9 @@ class SBBCodeParserTest extends TestBase
         ];
     }
 
+    /**
+     * @return array
+     */
     public function dataProviderTestIsTextValid()
     {
         return [
@@ -236,10 +219,24 @@ class SBBCodeParserTest extends TestBase
         ];
     }
 
+    /**
+     * @return array
+     */
     public function dataProviderTestIsTextValidEmoticons()
     {
+        $this->mockedConstructorArgList = [
+            [
+                'emoticons' => [
+                    'active' => true,
+                    'path' => [
+
+                    ],
+                ],
+            ]
+        ];
+
         $data = $this->dataProviderTestIsTextValid();
-        $data = array_merge( $data, [
+        $data = array_merge($data, [
             [
                 true,
                 ':)'

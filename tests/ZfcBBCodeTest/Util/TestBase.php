@@ -3,7 +3,7 @@
 
 namespace ZfcBBCodeTest\Util;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 class TestBase extends TestCase
 {

@@ -16,7 +16,7 @@ class SBBCodeParserFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        return new SBBCodeParser($container->get('Configuration')['zfc-bbcode']);
+        return new SBBCodeParser($container->get('config')['zfc-bbcode']);
     }
 
 }
