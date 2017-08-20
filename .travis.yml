@@ -6,10 +6,12 @@ php:
   - 5.6
   - 7
   - 7.1
+  - 7.2
   - nightly
 
 matrix:
   allow_failures:
+  - php: 7.2
   - php: nightly
 
 notifications:
