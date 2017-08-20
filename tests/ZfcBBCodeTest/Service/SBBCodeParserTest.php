@@ -98,7 +98,7 @@ class SBBCodeParserTest extends TestBase
         $class = $this->getClass();
         $result = $class->isTextValid($string);
 
-        $this->assertEquals($expected, $result, $string);
+        $this->assertEquals($expected, $result, $class->getErrorText());
     }
 
     /**

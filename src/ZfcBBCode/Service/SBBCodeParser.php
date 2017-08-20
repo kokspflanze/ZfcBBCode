@@ -9,6 +9,9 @@ class SBBCodeParser implements ParserInterface
     /** @var array */
     protected $configData = [];
 
+    /** @var  string */
+    protected $errorText = '';
+
     /**
      * SBBCodeParser constructor.
      * @param array $configData
@@ -69,11 +72,20 @@ class SBBCodeParser implements ParserInterface
 
             $parser->get_html();
 
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $result = false;
+            $this->errorText = $e->getMessage();
         }
 
         return $result;
+    }
+
+    /**
+     * @return string
+     */
+    public function getErrorText()
+    {
+        return $this->errorText;
     }
 
 }
