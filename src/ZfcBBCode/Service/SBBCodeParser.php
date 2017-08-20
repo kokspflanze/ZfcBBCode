@@ -60,6 +60,7 @@ class SBBCodeParser implements ParserInterface
             $parser->add_emoticons($this->configData['emoticons']['path']);
         }
 
+        $this->errorText = '';
         $result = true;
         try {
             $parser->parse($text)
@@ -72,6 +73,9 @@ class SBBCodeParser implements ParserInterface
 
             $parser->get_html();
 
+        } catch (\Exception $e) {
+            $result = false;
+            $this->errorText = $e->getMessage();
         } catch (\Throwable $e) {
             $result = false;
             $this->errorText = $e->getMessage();
