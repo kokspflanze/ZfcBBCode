@@ -9,7 +9,6 @@
         stopOnError="false"
         processIsolation="false"
         backupGlobals="false"
-        syntaxCheck="true"
         >
     <php>
         <server name='HTTP_HOST' value='' />
@@ -22,7 +21,4 @@
             <directory suffix="Test.php">.</directory>
         </testsuite>
     </testsuites>
-    <logging>
-        <log type="coverage-clover" target="../build/logs/clover.xml"/>
-    </logging>
 </phpunit>

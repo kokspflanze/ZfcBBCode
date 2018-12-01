@@ -7,7 +7,7 @@ Master
 
 ## SYSTEM REQUIREMENTS
 
-requires PHP 5.6 or later.
+requires PHP 7.1 or later.
 
 ## INSTALLATION
 
@@ -16,7 +16,6 @@ Installation of this module uses composer. For composer documentation, please re
 
 ```sh
 php composer.phar require kokspflanze/zfc-bbcode
-# (When asked for a version, type `dev-master`)
 ```
 
 Then add `ZfcBBCode` to your `config/application.config.php`.
@@ -26,7 +25,7 @@ that are listed in `composer.json`
 
 ## HTML-BBCode-Editor
 
-We recommend to use [www.sceditor.com](http://www.sceditor.com).
+We recommend to use [www.sceditor.com](https://www.sceditor.com).
 
 ## Feature
 

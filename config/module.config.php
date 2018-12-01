@@ -1,9 +1,10 @@
 <?php
 
-use ZfcBBCode\Service;
+namespace ZfcBBCode;
+
 use ZfcBBCode\View\Helper;
 
-$serverName = isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '';
+$serverName = $_SERVER['SERVER_NAME'] ?? '';
 
 return [
     'service_manager' => [
@@ -20,6 +21,11 @@ return [
         ],
         'factories' => [
             Helper\BBCodeParser::class => Helper\BBCodeParserFactory::class,
+        ],
+    ],
+    'validators' => [
+        'factories' => [
+            Validator\BBCodeValid::class => Validator\BBCodeValidFactory::class,
         ],
     ],
     'zfc-bbcode' => [

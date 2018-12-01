@@ -1,18 +1,16 @@
 <?php
 
-
 namespace ZfcBBCode\Service;
 
 interface ParserInterface
 {
-
     /**
      * get parsed text
      *
      * @param string $text
      * @return string
      */
-    public function getParsedText($text);
+    public function getParsedText(string $text): string;
 
     /**
      * check if the text is correct
@@ -20,5 +18,5 @@ interface ParserInterface
      * @param string $text
      * @return bool
      */
-    public function isTextValid($text);
+    public function isTextValid(string $text): bool;
 }

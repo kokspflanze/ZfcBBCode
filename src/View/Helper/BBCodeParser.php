@@ -24,7 +24,7 @@ class BBCodeParser extends AbstractHelper
      *
      * @return string
      */
-    public function __invoke($string)
+    public function __invoke(string $string): string
     {
         return $this->bbCodeParser->getParsedText($string);
     }

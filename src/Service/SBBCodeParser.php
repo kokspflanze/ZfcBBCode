@@ -27,7 +27,7 @@ class SBBCodeParser implements ParserInterface
      *
      * @return string
      */
-    public function getParsedText($text)
+    public function getParsedText(string $text): string
     {
         $parser = new Node_Container_Document(true, false);
 
@@ -52,7 +52,7 @@ class SBBCodeParser implements ParserInterface
      *
      * @return bool
      */
-    public function isTextValid($text)
+    public function isTextValid(string $text): bool
     {
         $parser = new Node_Container_Document();
 
@@ -87,7 +87,7 @@ class SBBCodeParser implements ParserInterface
     /**
      * @return string
      */
-    public function getErrorText()
+    public function getErrorText(): string
     {
         return $this->errorText;
     }

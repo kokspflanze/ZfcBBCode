@@ -1,6 +1,5 @@
 <?php
 
-
 namespace ZfcBBCode\Service;
 
 use Interop\Container\ContainerInterface;

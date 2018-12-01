@@ -1,6 +1,5 @@
 <?php
 
-
 namespace ZfcBBCode\Validator;
 
 use Zend\Validator\AbstractValidator;
@@ -26,11 +25,13 @@ class BBCodeValid extends AbstractValidator
 
     /**
      * BBCodeValid constructor.
+     *
      * @param ParserInterface $bbCodeParser
+     * @param array|null      $options
      */
-    public function __construct(ParserInterface $bbCodeParser)
+    public function __construct(ParserInterface $bbCodeParser, $options = null)
     {
-        parent::__construct();
+        parent::__construct($options);
 
         $this->bbCodeParser = $bbCodeParser;
     }
