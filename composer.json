@@ -28,10 +28,10 @@
     }
   ],
   "require": {
-    "php": "^7.1",
-    "zendframework/zend-servicemanager": "^3.0",
-    "zendframework/zend-validator": "^2.8",
-    "zendframework/zend-view": "^2.7",
+    "php": "^7.1 || ^8.0",
+    "laminas/laminas-servicemanager": "^3.0",
+    "laminas/laminas-validator": "^2.8",
+    "laminas/laminas-view": "^2.7",
     "kokspflanze/sbb-code-parser": "^0.1.2"
   },
   "require-dev": {
